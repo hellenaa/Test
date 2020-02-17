@@ -47,6 +47,9 @@ module.exports = {
 		],
 		"strict": [
 			"off", "global"
-		]
+		],
+		"camelcase": [
+			"off"
+		],
     }
 };

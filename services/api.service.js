@@ -30,21 +30,25 @@ module.exports = {
 				// 	"**"
 				// ],
 
-				// Route-level Express middlewares. More info: https://moleculer.services/docs/0.14/moleculer-web.html#Middlewares
+				// Route-level Express middlewares. More info:
+				// https://moleculer.services/docs/0.14/moleculer-web.html#Middlewares
 				use: [],
 
 				aliases: {
 					"POST /abouts":"content.addAbout",
-					"GET /abouts":"content.getAbouts",
+					"GET /abouts":"content.getAbouts"
 				},
 
-				// Enable/disable parameter merging method. More info: https://moleculer.services/docs/0.14/moleculer-web.html#Disable-merging
+				// Enable/disable parameter merging method. More info:
+				// https://moleculer.services/docs/0.14/moleculer-web.html#Disable-merging
 				mergeParams: true,
 
-				// Enable authentication. Implement the logic into `authenticate` method. More info: https://moleculer.services/docs/0.14/moleculer-web.html#Authentication
+				// Enable authentication. Implement the logic into `authenticate` method.
+				// More info: https://moleculer.services/docs/0.14/moleculer-web.html#Authentication
 				authentication: false,
 
-				// Enable authorization. Implement the logic into `authorize` method. More info: https://moleculer.services/docs/0.14/moleculer-web.html#Authorization
+				// Enable authorization. Implement the logic into `authorize` method.
+				// More info: https://moleculer.services/docs/0.14/moleculer-web.html#Authorization
 				authorization: false,
 
 				// The auto-alias feature allows you to declare your route alias directly in your services.
@@ -99,7 +103,8 @@ module.exports = {
 			}
 		],
 
-		// Do not log client side errors (does not log an error response when the error.code is 400<=X<500)
+		// Do not log client side errors
+		// (does not log an error response when the error.code is 400<=X<500)
 		log4XXResponses: false,
 		// Logging the request parameters. Set to any log level to enable it. E.g. "info"
 		logRequestParams: null,
@@ -138,15 +143,13 @@ module.exports = {
 				const token = auth.slice(7);
 
 				// Check the token. Tip: call a service which verify the token. E.g. `accounts.resolveToken`
-				if (token == "123456") {
+				if (token === "123456") {
 					// Returns the resolved user. It will be set to the `ctx.meta.user`
 					return { id: 1, name: "John Doe" };
-
 				} else {
 					// Invalid token
 					throw new ApiGateway.Errors.UnAuthorizedError(ApiGateway.Errors.ERR_INVALID_TOKEN);
 				}
-
 			} else {
 				// No token. Throw an error or do nothing if anonymous access is allowed.
 				// throw new E.UnAuthorizedError(E.ERR_NO_TOKEN);
@@ -169,7 +172,7 @@ module.exports = {
 			const { user } = ctx.meta;
 
 			// It check the `auth` property in action schema.
-			if (req.$action.auth == "required" && !user) {
+			if (req.$action.auth === "required" && !user) {
 				throw new ApiGateway.Errors.UnAuthorizedError("NO_RIGHTS");
 			}
 		}

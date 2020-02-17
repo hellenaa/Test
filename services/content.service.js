@@ -32,29 +32,40 @@ module.exports = {
 				about_text_arm: { type: "string", min: 10 },
 				about_text_rus: { type: "string", min: 10 },
 				about_text_eng: { type: "string", min: 10 },
-				status: { type: "string", min: 4 },
+				status: { type: "string", min: 4 }
 			},
 			async handler(ctx) {
-				const {
-					about_text_arm,
-					about_text_rus,
-					about_text_eng,
-					status
-				} = ctx.params;
-				const about = await prisma.about.create({
-					data: {
+				try {
+					const {
 						about_text_arm,
 						about_text_rus,
 						about_text_eng,
 						status
-					}
-				});
-				return about;
+					} = ctx.params;
+					const about = await prisma.about.create({
+						data: {
+							about_text_arm,
+							about_text_rus,
+							about_text_eng,
+							status
+						}
+					});
+					return about;
+				} catch (err) {
+					return err;
+				}
 			}
 		},
 		async getAbouts() {
-			const abouts = await prisma.about.findMany();
-			return abouts;
+			try {
+				const abouts = await prisma.about.findMany();
+				if (abouts === []) {
+					return abouts;
+				}
+				return "Text abouts not found";
+			} catch (err) {
+				return err;
+			}
 		}
 	},
 
