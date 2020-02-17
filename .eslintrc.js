@@ -1,0 +1,52 @@
+module.exports = {
+    "root": true,
+    "env": {
+        "node": true,
+        "commonjs": true,
+        "es6": true,
+        "jquery": false,
+        "jest": true,
+        "jasmine": true
+    },
+    "extends": "airbnb-base",
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": "2017"
+    },
+    "rules": {
+        "indent": [
+            "warn",
+            "tab",
+            { "SwitchCase": 1 }
+        ],
+        "quotes": [
+            "warn",
+            "double"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-var": [
+            "error"
+        ],
+        "no-console": [
+            "off"
+        ],
+        "no-unused-vars": [
+            "warn"
+        ],
+        "no-mixed-spaces-and-tabs": [
+            "warn"
+        ],
+		"no-tabs": [
+			"off"
+		],
+		"comma-dangle": [
+			"error", "never"
+		],
+		"strict": [
+			"off", "global"
+		]
+    }
+};
