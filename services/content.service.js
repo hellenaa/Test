@@ -29,10 +29,26 @@ module.exports = {
 	actions: {
 		addAbout: {
 			params: {
-				about_text_arm: { type: "string", min: 10 },
-				about_text_rus: { type: "string", min: 10 },
-				about_text_eng: { type: "string", min: 10 },
-				status: { type: "string", min: 4 }
+				about_text_arm: {
+					type: "string",
+					min: 10,
+					messages: { stringMin: "The '{field}' field must be at least 10 character." }
+				},
+				about_text_rus: {
+					type: "string",
+					min: 10,
+					messages: { stringMin: "The '{field}' field must be at least 10 character." }
+				},
+				about_text_eng: {
+					type: "string",
+					min: 10,
+					messages: { stringMin: "The '{field}' field must be at least 10 character." }
+				},
+				status: {
+					type: "string",
+					optional: true,
+					default: "hide",
+					min: 4 }
 			},
 			async handler(ctx) {
 				try {
